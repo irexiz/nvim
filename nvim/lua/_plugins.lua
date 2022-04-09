@@ -15,7 +15,6 @@ return require('packer').startup(function()
     use 'hrsh7th/cmp-buffer'
     use 'simrat39/rust-tools.nvim' 
     use 'hrsh7th/cmp-vsnip' 
-    use 'hrsh7th/vim-vsnip'
     use 'hrsh7th/vim-vsnip-integ'
     use 'nvim-lua/lsp-status.nvim'
     use 'nvim-lualine/lualine.nvim'

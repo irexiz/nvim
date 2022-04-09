@@ -1,4 +1,5 @@
-set shell=/bin/fish
+set shell=/opt/homebrew/bin/fish
+
 let mapleader = "\<Space>"
 
 set nocompatible
@@ -47,9 +48,6 @@ let g:secure_modelines_allowed_items = [
                 \ ]
 
 " from http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
-endif
 if executable('rg')
     set grepprg=rg\ --no-heading\ --vimgrep
     set grepformat=%f:%l:%c:%m
@@ -71,7 +69,6 @@ set updatetime=300
 " =============================================================================
 " # Editor settings
 " =============================================================================
-"
 "
 filetype plugin indent on
 set nrformats-=alpha
@@ -206,13 +203,14 @@ nnoremap <C-f> :sus<cr>
 map H ^
 map L $
 
+set clipboard+=unnamedplus
 " Neat X clipboard integration
 " ,p will paste clipboard into buffer
 " ,c will copy entire buffer into clipboard
-noremap <leader>p :read !xsel --clipboard --output<cr>
-noremap <leader>y :w !xsel -ib<cr><cr>
+noremap <leader>p :r !pbpaste<cr>
+noremap <leader>y :%w !pbcopy<cr><cr>
 
-" <leader>s for Rg search
+" <leader>s for Rg search (cargo install ripgrep, alternatively: https://github.com/junegunn/fzf)
 noremap <leader>s :Rg
 let g:fzf_layout = { 'down': '~20%' }
 command! -bang -nargs=* Rg
@@ -293,6 +291,7 @@ nnoremap <leader>; :NERDTreeToggle<CR>
 
 " NERDCommenter
 let g:NERDCreateDefaultMappings = 1
+
 " git blame
 nnoremap <Leader>g :Git blame<CR>
 
@@ -308,15 +307,14 @@ nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <space>a    <cmd>CodeActionMenu<CR>
 
-
 " Goto previous/next diagnostic warning/error
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 " Show diagnostic popup on cursor hold
 autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
-
-" Debugger DAP
+ 
+" Debugger DAP (experimental)
 nnoremap <silent> <F6> :lua require'dapui'.toggle()<CR>
 nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
 nnoremap <silent> <leader><F5> :lua require'dap'.disconnect()<CR>

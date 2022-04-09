@@ -25,7 +25,7 @@ local opts = {
                 checkOnSave = {
                     enable = true,
                     command = "check",
-                    extraArgs = { "--target-dir", "/tmp/rust-analyzer-check" }
+                    extraArgs = { "--target-dir", "/tmp/rust-analyzer-check", "--all-features" }
                 },
             }
         }
