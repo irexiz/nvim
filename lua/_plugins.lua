@@ -6,18 +6,22 @@ end
 vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
+    use 'lewis6991/impatient.nvim'
     -- LSP
     use 'neovim/nvim-lspconfig' 
+    use 'simrat39/rust-tools.nvim'
     use 'hrsh7th/nvim-cmp' 
     use 'hrsh7th/cmp-nvim-lsp' 
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-buffer'
-    use 'simrat39/rust-tools.nvim' 
-    use 'hrsh7th/vim-vsnip'
     use 'hrsh7th/cmp-vsnip' 
+    use 'hrsh7th/vim-vsnip'
+    use 'hrsh7th/vim-vsnip-integ'
     use 'nvim-lua/lsp-status.nvim'
     use 'nvim-lualine/lualine.nvim'
     use 'weilbith/nvim-code-action-menu'
+    use 'ray-x/lsp_signature.nvim'
+    use 'windwp/nvim-autopairs'
 
     -- GUI enhancements
     use 'machakann/vim-highlightedyank'
@@ -28,9 +32,7 @@ return require('packer').startup(function()
     use 'tpope/vim-surround'
     use 'justinmk/vim-sneak'
     use 'jiangmiao/auto-pairs'
-    use 'godlygeek/tabular'
-    use 'ap/vim-buftabline'
-    use 'tpope/vim-fugitive'
+    use 'iamcco/markdown-preview.nvim'
 
     -- Fuzzy finder
     use 'airblade/vim-rooter'
@@ -38,15 +40,7 @@ return require('packer').startup(function()
     use 'junegunn/fzf.vim'
 
     -- Syntactic language support
-    use 'cespare/vim-toml'
-    use 'stephpy/vim-yaml'
-    use 'dag/vim-fish'
-    use 'plasticboy/vim-markdown'
     use 'sheerun/vim-polyglot'
     use 'kabbamine/yowish.vim'
     use 'morhetz/gruvbox'
-
-    -- Debuggers
-    use 'mfussenegger/nvim-dap'
-    use 'rcarriga/nvim-dap-ui'
 end)

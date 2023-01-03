@@ -2,13 +2,13 @@
 -- See https://github.com/hrsh7th/nvim-cmp#basic-configuration
 local cmp = require'cmp'
 cmp.setup({
-  -- Enable LSP snippets
   snippet = {
+    -- REQUIRED by nvim-cmp. get rid of it once we can
     expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
+      vim.fn["vsnip#anonymous"](args.body)
     end,
   },
-  mapping = {
+    mapping = {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
     -- Add tab support
@@ -23,12 +23,15 @@ cmp.setup({
       select = true,
     })
   },
-
-  -- Installed sources
-  sources = {
+  sources = cmp.config.sources({
+    -- TODO: currently snippets from lsp end up getting prioritized -- stop that!
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
     { name = 'path' },
     { name = 'buffer' },
+    { name = 'nvim_lsp' },
+  }),
+  experimental = {
+    ghost_text = true,
   },
 })
