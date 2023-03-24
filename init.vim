@@ -307,6 +307,9 @@ nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <space>a    <cmd>CodeActionMenu<CR>
 
+highlight QuickScopePrimary guifg='#ff5f00' gui=bold ctermfg=202 cterm=bold 
+highlight QuickScopeSecondary guifg='#ff00ff' gui=bold ctermfg=201 cterm=bold
+
 
 " Goto previous/next diagnostic warning/error
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>

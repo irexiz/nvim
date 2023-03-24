@@ -22,6 +22,7 @@ return require('packer').startup(function()
     use 'weilbith/nvim-code-action-menu'
     use 'ray-x/lsp_signature.nvim'
     use 'windwp/nvim-autopairs'
+    use 'unblevable/quick-scope'
 
     -- GUI enhancements
     use 'machakann/vim-highlightedyank'
