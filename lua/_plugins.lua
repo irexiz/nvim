@@ -23,6 +23,8 @@ return require('packer').startup(function()
     use 'ray-x/lsp_signature.nvim'
     use 'windwp/nvim-autopairs'
     use 'unblevable/quick-scope'
+    use 'folke/trouble.nvim'
+    use 'nvim-tree/nvim-web-devicons'
 
     -- GUI enhancements
     use 'machakann/vim-highlightedyank'
