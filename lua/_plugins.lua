@@ -10,7 +10,7 @@ return require('packer').startup(function()
     -- LSP
     use 'neovim/nvim-lspconfig' 
     use 'simrat39/rust-tools.nvim'
-    use 'hrsh7th/nvim-cmp' 
+    use { 'hrsh7th/nvim-cmp', commit = '1cad30fcffa282c0a9199c524c821eadc24bf939' }
     use 'hrsh7th/cmp-nvim-lsp' 
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-buffer'
@@ -25,6 +25,10 @@ return require('packer').startup(function()
     use 'unblevable/quick-scope'
     use 'folke/trouble.nvim'
     use 'nvim-tree/nvim-web-devicons'
+    use 'apzelos/blamer.nvim'
+    use 'bling/vim-bufferline'
+
+    use 'fatih/vim-go'
 
     -- GUI enhancements
     use 'machakann/vim-highlightedyank'

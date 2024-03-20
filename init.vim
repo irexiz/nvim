@@ -6,6 +6,10 @@ filetype off
 " ========= 
 " # Plugins
 " ========= 
+"
+set background=dark
+colorscheme gruvbox
+
 
 lua <<EOF
 require('_plugins')
@@ -13,10 +17,11 @@ require('_lualine')
 require('_lspconfig')
 require('_cmp')
 require('_lspstatus')
-EOF
 
-set background=dark
-colorscheme gruvbox
+for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+    vim.api.nvim_set_hl(0, group, {})
+end
+EOF
 
 " Set completeopt to have a better completion experience
 " :help completeopt
@@ -87,9 +92,6 @@ let g:sneak#s_next = 1
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_auto_insert_bullets = 0
 let g:vim_markdown_frontmatter = 1
-set printfont=:h10
-set printencoding=utf-8
-set printoptions=paper:letter
 " Always draw sign column. Prevent buffer moving when adding/deleting sign.
 set signcolumn=yes
 
@@ -292,8 +294,7 @@ nnoremap <leader>; :NERDTreeToggle<CR>
 
 " NERDCommenter
 let g:NERDCreateDefaultMappings = 1
-" git blame
-nnoremap <Leader>g :Git blame<CR>
+nnoremap <Leader>g :TroubleToggle<CR>
 
 " Code navigation shortcuts
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
@@ -320,7 +321,7 @@ nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 " Show diagnostic popup on cursor hold
-autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
+autocmd BufWritePre *.rs lua vim.lsp.buf.format(nil, 200)
 
 "=============================================================================
 " # Autocommands
